@@ -1,1 +1,1 @@
-print 'hello git-world'
+print 'hello git-world, and really any other stuff'
