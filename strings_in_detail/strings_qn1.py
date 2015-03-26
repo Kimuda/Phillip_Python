@@ -8,11 +8,17 @@ while name!="":
     namelist+=[name]
     name=input("enter name ")
 
-lastname=input("enter last name ")
-for i in range(len(namelist)):
-    print(namelist[i]+", ",end="")
+#lastname=input("enter last name ") #not necessary!!
+#for i in range(len(namelist)): #not necessary!
+#    print(namelist[i]+", ",end="") #not necessary!
     
-print('and {0}'.format(lastname))
+#print('and {0}'.format(lastname))
+
+print(namelist)
+
+print (", ".join(namelist[:-1]),end="")
+   
+print(" and",namelist[-1])
 
 
 
