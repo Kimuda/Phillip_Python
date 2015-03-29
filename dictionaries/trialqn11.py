@@ -4,20 +4,52 @@
 
 #qn11Extend your solution to the previous problem, by allowing customers to enter multi-line comments, and to terminate their comments by entering a blank line. If the comment is entirely blank, i.e. the first line is blank, then it does not overwrite the former comment if any. Also, ensure that when the comments are outputted back, either because of the 'showcomments' command, or a repeat customer entering their name, that the line width of the outputted comments does not exceed 60 characters, nor break a word in two, i.e. lines are only broken on white space.
 
+def captureMultilineComment():
+    comment=input("enter comment about the shop")
+    multiline=""
+    while comment!="":
+        multiline+=comment+" "
+    comment=input("enter comment about the shop")
+    return multiline
+
+def printLinesof60(text):
+    rest=text[:]
+    while len(rest)>60:
+       position=rest[0:60].rfind(" ")+1
+       print("\t"+rest[0:position])
+       rest=rest[position:]
+    print("\t"+rest)
 
 
-while name!='quit':
+
+guestbook={}
+name=input("enter name> (input quit to exit or showcomments to display the guestbook) ")
+name=name.lower()
+
+while name!="quit":
+    
     if name=="showcomments":
-        for customer in database:
-            print(customer,database[customer])
+        for key in guestbook:
+            print(key,"\n\t")
+            printLinesof60(guestbook[key])
 
-    else:
-        if name in database:
-            print("heya partner, welcome back",name)
-            print(database[name])
-        comment=input("enter your comment")
+    else:                          #same as, if name!="showcomments"
+            if name in guestbook:
+                print("You already have a comment in the guestbook, check it out",guestbook[name])
+                printLinesof60(guestbook[key])
 
-        if comment!="":
-            database[name]=comment
+            comment=captureMultilineComment()
 
-    name = input("Enter your name or 'quit' to exit program: ")
+            if comment!="":
+                guestbook[name]=comment #replaces old comment, else preserves the old one. 
+            else:
+                comment=captureMultilineComment()
+                guestbook[name]=comment
+    
+    name=input("enter name> (input quit to exit or showcomments to display the guestbook) ")
+    name=name.lower()
+
+
+
+
+

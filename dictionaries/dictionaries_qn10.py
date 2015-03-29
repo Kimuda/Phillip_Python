@@ -20,5 +20,6 @@ while name != 'quit': #if quit is entered, the program exits
 
         if comment != "":
             database[name.lower()] = comment #input into database is in lower case
+
     name = input("Enter your name or 'quit' to exit program: ")
 
