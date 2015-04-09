@@ -1,0 +1,11 @@
+#Ex.1 Create your own version of the function random.randrange() by using the function random.randint.
+
+import random
+
+x=int(input("enter a lower integer limit, format x<y: "))
+y=int(input("enter an upper integer limit, format y>x: "))
+
+
+random.randint(x,y)
+
+

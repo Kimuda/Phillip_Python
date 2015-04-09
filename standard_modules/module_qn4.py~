@@ -1,0 +1,1 @@
+#qn4-Emulate a full hand of poker texas hold'em. The number of players should be captured as an argument from the command line. The program should show the 2 cards that each user received, the flop, the turn, the river and the discarded cards.

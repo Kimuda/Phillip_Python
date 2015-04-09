@@ -1,0 +1,46 @@
+#step 1-importing the data
+
+f=open("TCP1_beta.gbk","r")
+lines = f.readlines()
+#split_lines=lines.split()
+#print(split_lines)
+
+
+#capturing line by line to produce data structure
+
+dic={}
+oldkey =""
+
+for i in range(len(lines)): #LOCUS
+
+    a_string=lines[i]
+    key = a_string[:12].strip()
+    value = a_string[12:]
+
+    if key=='LOCUS' or key=='VERSION' :
+        dic[key]=value.split()
+
+    if key=='ACCESSION' or key=='KEYWORDS' or key=='SOURCE':
+        dic[key]=value.strip() 
+
+    if key=='DEFINITION':
+        dic[key]=value.strip()
+
+
+    if key=='ORGANISM': 
+        dic['ORGANISM']=value.strip()
+       
+
+    if key=='': 
+        dic[oldkey]+=value
+    else: 
+        oldkey = key
+
+    if key == "REFERENCE":
+        break
+    
+        
+print(dic)
+    
+ 
+

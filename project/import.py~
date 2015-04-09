@@ -1,0 +1,14 @@
+
+def readgenbank(filename):
+    f=open(filename,"r")
+    data=f.read()
+    f.close()
+    return data
+
+data=readgenbank("TCP1_beta.gbk")
+
+print(data)
+
+
+
+

@@ -1,0 +1,14 @@
+#step 1-importing the data
+
+f=open("TCP1_beta.gbk","r")
+data = f.read()
+#print(data)
+
+#step 2- generating the data structure
+
+data2=data.split("\n")
+newlist=[]
+for item in data2:
+    d=item.split("\t")
+    newlist+=[d]
+print(newlist)

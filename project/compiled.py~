@@ -1,0 +1,63 @@
+###step 1-importing the data
+
+def readGenbank(filename):
+    f=open(filename,"r")
+    data=f.read()
+    f.close()
+    return data  
+data=readGenbank("TCP1_beta.gb")
+
+def readGenbank2(filename):
+    f=open("TCP1_beta.gb","r")
+    lines = f.readlines()
+    f.close()
+    return lines
+lines=readGenbank2("TCP1_beta.gb")
+
+###step 2-Dictionary from locus to organism.
+
+dic={}
+oldkey =""
+
+for i in range(len(lines)): #LOCUS
+
+    a_string=lines[i]
+    key = a_string[:12].strip()
+    value = a_string[12:]
+
+    if key=='LOCUS' or key=='VERSION' :
+        dic[key]=value.split()
+
+    if key=='ACCESSION' or key=='KEYWORDS' or key=='DEFINITION':
+        dic[key]=value.strip() 
+
+    if key=='': 
+        dic[oldkey]+=value
+    else: 
+        oldkey = key
+
+    if key == "SOURCE":
+        break 
+       
+#print(dic) #stop and check 
+
+###step 3-Extracting the dna sequence- Origin
+
+origin=data.find('ORIGIN') #where to start frm
+start=data.find('1',origin) #move the pointer to the second line that starts with 1
+end=data.find('//',origin) #establish a stop point
+dna_value=data[start:end].split('\n') #remove the new lines
+dna_sequence=""                        
+
+for item in dna_value:
+    no_spaces=item.split()
+    dna_sequence+=''.join(no_spaces[1:]) #remove the first line containing numbers
+
+dic['ORIGIN']=dna_sequence #adding the contents of origin to the dictionary
+
+print(dic) #stop and check
+
+###step 4-Adding from Source to Features
+
+
+

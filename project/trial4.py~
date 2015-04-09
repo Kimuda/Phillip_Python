@@ -1,0 +1,17 @@
+#step 1-importing the data
+
+f=open("TCP1_beta.gbk","r")
+lines = f.readlines()
+#split_lines=lines.split()
+#print(split_lines)
+
+
+#capturing line by line to produce data structure
+
+for i in range(len(lines)):
+    if i<20:
+        a_string=lines[i]
+        print (a_string[:12])        
+
+#print(split_lines[i])
+    

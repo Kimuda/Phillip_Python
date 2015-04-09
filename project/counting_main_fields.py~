@@ -1,0 +1,35 @@
+
+def readGenbank2(filename):
+    f=open("TCP1_beta.gb","r")
+    lines = f.readlines()
+    f.close()
+    return lines
+
+def processLocus(lines):
+    return lines
+
+lines=readGenbank2("TCP1_beta.gb")
+
+#def return_string():
+
+list0=[]
+list_position=[]
+for i in range(len(lines)):
+    a_string=lines[i]
+    key = a_string[:12]
+    if key.startswith(' ')==False and len(key)<=12:
+        list0+=[key.strip()]
+        list_position+=[i]
+
+genbank ={}
+for i in range(len(list0)-1):
+    if list0[i]=="LOCUS":
+        genbank["LOCUS"] = processLocus(lines[list_position[i]:list_position[i+1]])
+#    print (list0[i], list_position[i], list_position[i+1])
+#    print (lines[list_position[i]:list_position[i+1]])
+    if list0[i]=="DEFINITION":
+        genbank["DEFINITION"] = processLocus(lines[list_position[i]:list_position[i+1]])
+
+
+print (genbank)
+

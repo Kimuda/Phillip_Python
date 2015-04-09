@@ -1,0 +1,38 @@
+#step 1-importing the data
+
+f=open("TCP1_beta.gbk","r")
+lines = f.readlines()
+#split_lines=lines.split()
+#print(split_lines)
+
+
+#source
+
+dic={}
+oldkey =""
+
+for i in range(len(lines)): #LOCUS
+
+    a_string=lines[i]
+    key = a_string[:12].rstrip()
+    value = a_string[12:]
+
+    if key!="":
+
+        if key=='SOURCE':
+            dic[key]=[value.strip()]      
+
+        if key=='  ORGANISM': 
+            dic["SOURCE"] += [{key:value.strip()}]
+        oldkey = key
+    else:
+        #
+        dic[oldkey]+=value
+    if key == "FEATURES":
+        break
+    
+        
+print(dic)
+    
+ 
+

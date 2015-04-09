@@ -1,0 +1,29 @@
+#step 1-importing the data
+
+def readGenbank(filename):
+    f=open(filename,"r")
+    data=f.read()
+    f.close()
+    
+    return data
+
+data=readGenbank("TCP1_beta.gbk")
+
+#step 2 just the dna
+
+origin=data.find('ORIGIN') #where to start frm
+start=data.find('1',origin) #move the pointer to the second line that starts with 1
+end=data.find('//',origin) #establish a stop point
+a=data[start:end].split('\n') #remove the new lines
+dna=""                        
+
+for i in a:
+    spl=i.split()
+    dna+=''.join(spl[1:]) #remove the first line containing numbers
+
+#print(dna)
+
+dic3={}
+dic3['ORIGIN']=dna
+
+print(dic3)

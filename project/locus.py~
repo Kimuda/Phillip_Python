@@ -1,0 +1,15 @@
+seq="AGCTCCCCCCGGGAAAATT"
+#print(seq)
+#print(seq[0:])
+#print(seq[1:])
+#print(seq[2:])
+orf_query=input("Select which ORF to check (1,2,3,or a blank line for all")
+
+if orf_query=="1":
+    print("one")
+elif orf_query=="2":
+    print("two")
+elif orf_query=="3":
+    print("three")
+elif orf_query=="":
+    print("space")   

@@ -1,0 +1,43 @@
+#step 1-importing the data
+
+f=open("TCP1_beta.gbk","r")
+data = f.readlines()
+#print(data)
+
+#step 2- generating the data structure
+
+#need a way to read the file until the line starting with source or line starting with organism
+
+newlist=[]
+for item in data:
+    d=[item.split("\n")]
+    newlist+=d
+#print(newlist[0:6])
+
+#[['LOCUS', 'SCU49845', '5028', 'bp', 'DNA', 'PLN', '21-JUN-1999'], ['DEFINITION', 'Saccharomyces', 'cerevisiae', 'TCP1-beta', 'gene,', 'partial', 'cds,', 'and', 'Axl2p'], ['(AXL2)', 'and', 'Rev7p', '(REV7)', 'genes,', 'complete', 'cds.'], ['ACCESSION', 'U49845'], ['VERSION', 'U49845.1', 'GI:1293613'], ['KEYWORDS', '.']]
+
+
+dic2={}
+newlist2=newlist[0:7]
+counter=0
+list_dict1=[]
+while counter<len(newlist):
+    dic1={}       
+    dic1["LOCUS"]=newlist2[0]
+    dic1["DEFINITION"]=newlist2[1]+newlist[2]
+    #dic1["DEFINITION2"]=newlist2[2]
+    dic1["ACCESSION"]=newlist2[3]+newlist[4]
+    dic1["KEYWORDS"]=newlist2[5]
+    
+    list_dict1=[dic1]
+    counter=counter+1
+    
+#print(list_dict1)
+
+for item in list_dict1:
+    for item2 in item["LOCUS"][0]:
+        d=item2.split()
+        print(item2,end="")
+print()
+
+ 
