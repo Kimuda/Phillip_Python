@@ -1,0 +1,8 @@
+1	ttctgccagc
+9	actgg
+4	tgccagatggc
+19	acgtgc
+23	gcc
+11	tggagaagac
+21	gtgcc
+16	aagacg
